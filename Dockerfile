@@ -21,7 +21,6 @@ RUN apt-get update && \
 
 
 # Install object detection training dependencies
-
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y protobuf-compiler \
     # python3-pil \

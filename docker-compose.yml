@@ -1,0 +1,79 @@
+version: '2.3'
+
+
+services:
+
+  ipython-shell:
+    build: .
+    runtime: nvidia
+
+    volumes:
+      - ./data:/code/data
+      - ./scripts:/code/scripts
+
+    working_dir: /code/data
+
+    ports:
+      - 6006:6006
+
+    stdin_open: true
+    tty: true
+
+    command: ipython --TerminalInteractiveShell.editing_mode=vi
+
+  download-images:
+    build: .
+    runtime: nvidia
+
+    volumes:
+      - ./data:/code/data
+      - ./scripts:/code/scripts
+
+    working_dir: /code/data
+
+    ports:
+      - 6006:6006
+
+    stdin_open: true
+    tty: true
+
+    command: bash /code/scripts/download-images.sh
+
+
+  create-tf-records:
+    build: .
+    runtime: nvidia
+
+    volumes:
+      - ./data:/code/data
+      - ./scripts:/code/scripts
+
+    working_dir: /code/data
+
+    ports:
+      - 6006:6006
+
+    stdin_open: true
+    tty: true
+
+    command: bash /code/scripts/create-tf-records.sh
+
+
+  train:
+    build: .
+    runtime: nvidia
+
+    volumes:
+      - ./data:/code/data
+      - ./scripts:/code/scripts
+
+    working_dir: /code/data
+
+    ports:
+      - 6006:6006
+      - 8888:8888
+
+    stdin_open: true
+    tty: true
+
+    command: bash /code/scripts/train.sh

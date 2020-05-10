@@ -10,7 +10,7 @@ CHECKPOINT=/code/data/train_data/model.ckpt-16283
 # PIPELINE_CONFIG_PATH=data/ssd_mobilenet_v2.config
 # CHECKPOINT=train_data/data/train_data/model.ckpt-16283
 
-python scripts/export_model.py \
+python /code/scripts/export_model.py \
     --input_type $INPUT_TYPE \
     --pipeline_config_path $PIPELINE_CONFIG_PATH  \
     --trained_checkpoint_prefix $CHECKPOINT \

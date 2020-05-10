@@ -65,7 +65,7 @@ services:
 
     command: bash /code/scripts/train.sh
 
-  train:
+  export-model:
     build: .
     runtime: nvidia
 

@@ -13,9 +13,6 @@ services:
 
     working_dir: /code/data
 
-    ports:
-      - 6006:6006
-
     stdin_open: true
     tty: true
 
@@ -30,9 +27,6 @@ services:
       - ./scripts:/code/scripts
 
     working_dir: /code/data
-
-    ports:
-      - 6006:6006
 
     stdin_open: true
     tty: true
@@ -50,9 +44,6 @@ services:
 
     working_dir: /code/data
 
-    ports:
-      - 6006:6006
-
     stdin_open: true
     tty: true
 
@@ -69,11 +60,22 @@ services:
 
     working_dir: /code/data
 
-    ports:
-      - 6006:6006
-      - 8888:8888
-
     stdin_open: true
     tty: true
 
     command: bash /code/scripts/train.sh
+
+  train:
+    build: .
+    runtime: nvidia
+
+    volumes:
+      - ./data:/code/data
+      - ./scripts:/code/scripts
+
+    working_dir: /code/data
+
+    stdin_open: true
+    tty: true
+
+    command: bash /code/scripts/export_model.sh

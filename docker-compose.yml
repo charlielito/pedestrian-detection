@@ -10,44 +10,33 @@ services:
     volumes:
       - ./data:/code/data
       - ./scripts:/code/scripts
+      - ./annotations:/code/annotations
+      - ./images:/code/images
 
-    working_dir: /code/data
+    working_dir: /code
 
     stdin_open: true
     tty: true
 
     command: ipython --TerminalInteractiveShell.editing_mode=vi
 
-  download-images:
+  create-dataset:
     build: .
     runtime: nvidia
 
     volumes:
       - ./data:/code/data
       - ./scripts:/code/scripts
+      - ./images:/code/images
+      - ./test_images:/code/test_images
+      - ./annotations:/code/annotations
 
-    working_dir: /code/data
-
-    stdin_open: true
-    tty: true
-
-    command: bash /code/scripts/download-images.sh
-
-
-  create-tf-records:
-    build: .
-    runtime: nvidia
-
-    volumes:
-      - ./data:/code/data
-      - ./scripts:/code/scripts
-
-    working_dir: /code/data
+    working_dir: /code
 
     stdin_open: true
     tty: true
 
-    command: bash /code/scripts/create-tf-records.sh
+    command: bash /code/scripts/download_process_data.sh
 
 
   train:
@@ -58,7 +47,7 @@ services:
       - ./data:/code/data
       - ./scripts:/code/scripts
 
-    working_dir: /code/data
+    working_dir: /code
 
     stdin_open: true
     tty: true
@@ -73,8 +62,7 @@ services:
       - ./data:/code/data
       - ./scripts:/code/scripts
 
-    working_dir: /code/data
-
+    working_dir: /code
     stdin_open: true
     tty: true
 

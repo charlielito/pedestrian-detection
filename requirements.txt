@@ -6,3 +6,5 @@ pandas
 numpy
 opencv-python
 Pillow
+lxml
+python_path

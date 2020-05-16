@@ -58,7 +58,7 @@ To train just run the train service
 docker-compose up train
 ```
 
-Inside `scripts/train.sh` there are some parameters you can change. For example `MODEL_DIR` that controls where the checkpoints of the trained model are going to be stored.
+Inside  [scripts/train.sh](scripts/train.sh) there are some parameters you can change. For example `MODEL_DIR` that controls where the checkpoints of the trained model are going to be stored.
 
 
 ## Exporting model to saved model for serving and prediction
@@ -67,11 +67,10 @@ To export the trained model, execute:
 docker-compose up export-model
 ```
 
-You need to change some variables inside `scripts/train.sh` for your case. The variables by default look like this:
+You need to change some variables inside [scripts/export_model.sh](scripts/export_model.sh) for your case. The variables by default look like this:
 
 ```
 INPUT_TYPE=image_tensor
-# INPUT_TYPE=encoded_image_string_tensor
 EXPORT_DIR=/code/data/export_models/ssd_mobilenet_v2_pedestrian
 PIPELINE_CONFIG_PATH=/code/data/ssd_mobilenet_v2.config
 TRAINED_CKPT_PREFIX=/code/data/train_data/model.ckpt-16283
@@ -80,10 +79,14 @@ TRAINED_CKPT_PREFIX=/code/data/train_data/model.ckpt-16283
 In case of using `ssd_mobilenet_v2`, the only change required is the `TRAINED_CKPT_PREFIX` variable for whatever checkpoint number you want to export. Also if you want your model to receive a image encoded string instead of the raw image matrix, use `INPUT_TYPE=encoded_image_string_tensor`
 
 ## Running inference
-To run inference over the video of the dataset or a folder wit a bunch of images run the following service:
+To run inference over the video of the dataset or a folder with a bunch of images run the following service:
 ```
 docker-compose run run-inference
 ```
 Modify inside `scripts/run_inference.py` the `source_path` variable for choosing a video file or a folder.
 
 Enjoy!
+
+### Training for another task
+
+This can be a good starting point if you need a detector for another task. Just need to change the creating of the dataset and tf records, change the file [label map file](annotations/label_map.pbtxt) with the new label map, and change the configuration file with the new number of classes. That would be it!

@@ -4,6 +4,9 @@ models/
 *.record
 train_data/
 test_images/
+data/TownCentre-groundtruth.top
+data/TownCentreXVID.avi
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

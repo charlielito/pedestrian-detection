@@ -20,7 +20,7 @@ def video2im(src, train_path="images", test_path="test_images", factor=2):
     print("Total Frame Count:", length)
 
     train_size = int(length * 0.9)
-    train_size = 4500  # after that labels show wrong info
+    train_size = 4500  # only labels for the first 4500 frames
 
     while True:
         check, img = cap.read()

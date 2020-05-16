@@ -32,8 +32,6 @@ RUN pip install pycocotools
 WORKDIR /code
 RUN git clone https://github.com/tensorflow/models.git && git checkout v2.2.0
 
-RUN mkdir -p /code/{CSV,output,train,annotations}
-
 
 WORKDIR /code/models/research
 RUN protoc object_detection/protos/*.proto --python_out=.

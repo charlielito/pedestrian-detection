@@ -67,3 +67,22 @@ services:
     tty: true
 
     command: bash /code/scripts/export_model.sh
+    
+  run-inference:
+    build: .
+    runtime: nvidia
+
+    volumes:
+      - ./data:/code/data
+      - ./scripts:/code/scripts
+      - ./test_images:/code/test_images
+      - /tmp/.X11-unix:/tmp/.X11-unix
+
+    environment:
+      DISPLAY: $DISPLAY
+      QT_X11_NO_MITSHM: 1 
+    working_dir: /code
+    stdin_open: true
+    tty: true
+
+    command: python /code/scripts/run_inference.py

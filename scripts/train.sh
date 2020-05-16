@@ -4,7 +4,6 @@ MODEL_DIR=/code/data/train_data
 NUM_TRAIN_STEPS=50000
 SAMPLE_1_OF_N_EVAL_EXAMPLES=1
 
-
 if [ -d $MODEL_DIR ]; then
     rm -r "$MODEL_DIR/*"
 fi
@@ -13,9 +12,6 @@ if [ ! -d $MODEL_DIR ]; then
 fi
 
 cd /code/models/research
-
-
-
 python object_detection/model_main.py \
     --logtostderr \
     --pipeline_config_path=${PIPELINE_CONFIG_PATH} \

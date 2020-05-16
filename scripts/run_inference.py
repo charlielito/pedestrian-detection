@@ -59,7 +59,7 @@ def run_inference_images(images_list, model, min_score):
 
 
 if __name__ == "__main__":
-    saved_model_path = "data/models/ssd_mobilenet_v2_pedestrian/saved_model"
+    saved_model_path = "data/export_models/ssd_mobilenet_v2_pedestrian/saved_model"
     source_path = "data/TownCentreXVID.avi"
     # source_path = "test_images"
     min_score = 0.3

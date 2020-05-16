@@ -60,6 +60,12 @@ docker-compose up train
 
 Inside  [scripts/train.sh](scripts/train.sh) there are some parameters you can change. For example `MODEL_DIR` that controls where the checkpoints of the trained model are going to be stored.
 
+### Tensorboard monitoring
+To explore how the training is doing you can launch the tensorboard service
+```
+docker-compose up tensorboard
+```
+Got to [localhost:6006](http://localhost:6006) to see the results
 
 ## Exporting model to saved model for serving and prediction
 To export the trained model, execute:

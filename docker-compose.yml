@@ -54,6 +54,21 @@ services:
 
     command: bash /code/scripts/train.sh
 
+  tensorboard:
+    build: .
+
+    volumes:
+      - ./data:/code/data
+
+    working_dir: /code
+    ports:
+      - "6000:6006"
+
+    stdin_open: true
+    tty: true
+
+    command: tensorboard --logdir data/train_data
+
   export-model:
     build: .
     runtime: nvidia

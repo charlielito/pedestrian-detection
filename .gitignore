@@ -1,6 +1,7 @@
 images/
 annotations/xmls/
 models/
+export_models/
 *.record
 train_data/
 test_images/

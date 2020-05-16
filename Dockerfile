@@ -30,7 +30,9 @@ RUN pip install pycocotools
 
 # Clone object detection tensorflow/models repository
 WORKDIR /code
-RUN git clone https://github.com/tensorflow/models.git && git checkout v2.2.0
+RUN git clone https://github.com/tensorflow/models.git
+# tested commit from 15 may 2020
+RUN cd models/ && git checkout e5c9661aadbcb90cb4fd3ef76066f6d1dab116ff
 
 
 WORKDIR /code/models/research

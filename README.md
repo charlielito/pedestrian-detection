@@ -1,6 +1,9 @@
 # Pedestrian detection
 Pedestrian detection using the object detection API of tensorflow finetuning a pretrained model for only pedestrian detection. Based on this [repo](https://github.com/thatbrguy/Pedestrian-Detection) but fixed some bugs in the processing of the data and containerized everything because the dependencies versions is a mess.
 
+![alt text][s1] 
+
+
 ### Requirements
 * Docker
 * Docker-compose
@@ -96,3 +99,7 @@ Enjoy!
 ### Training for another task
 
 This can be a good starting point if you need a detector for another task. Just need to change the creating of the dataset and tf records, change the file [label map file](annotations/label_map.pbtxt) with the new label map, and change the configuration file with the new number of classes. That would be it!
+
+
+
+[s1]: https://raw.githubusercontent.com/charlielito/pedestrian-detection/master/demo.gif "S"
